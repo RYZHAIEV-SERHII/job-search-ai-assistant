@@ -1,6 +1,6 @@
 [project]
 name = "job-search-ai-assistant"
-version = "0.1.0"
+version = "0.0.0"
 description = "A comprehensive job search aggregator built with Python 3.13 and FastAPI that integrates multiple job platforms to streamline the job hunting process."
 authors = [{ name = "RYZHAIEV SERHII", email = "rsp89.we@gmail.com" }]
 readme = "README.md"
