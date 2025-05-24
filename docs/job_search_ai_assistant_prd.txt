@@ -2,86 +2,85 @@
 
 ## System Components
 1. **Backend Service (Python 3.13)**
-   - FastAPI framework for the core API
-   - Supabase for data persistence and user management
-   - Job scraping and API integration modules
-   - Notification service
+- FastAPI framework for the core API
+- Supabase for data persistence and user management
+- Job scraping and API integration modules
+- Notification service
 
 2. **Data Collection Layer**
-   - API integration modules for platforms with available APIs (LinkedIn, etc.)
-   - Bright Data MCP and Crawl4AI implementations for platforms without APIs
-   - Data normalization component to standardize job listings
+- Bright Data MCP and Crawl4AI implementations for platforms without APIs
+- Data normalization component to standardize job listings
 
 3. **Web Interface**
-   - Streamlit-based frontend for improved UX
-   - Responsive design supporting multiple devices
-   - Interactive dashboard with search, filters, and analytics
+- Streamlit-based frontend for improved UX
+- Responsive design supporting multiple devices
+- Interactive dashboard with search, filters, and analytics
 
 4. **Notification System**
-   - Email notification service (primary)
-   - Telegram integration (optional)
-   - Configurable notification preferences and schedules
+- Email notification service (primary)
+- Telegram integration (optional)
+- Configurable notification preferences and schedules
 
 ## Data Models
 1. **User Model**
-   - Basic profile information (name, email, preferences)
-   - Search history and saved searches
-   - Notification preferences
-   - Platform credentials (as needed for API access)
+- Basic profile information (name, email, preferences)
+- Search history and saved searches
+- Notification preferences
+- Platform credentials (as needed for API access)
 
 2. **Job Listing Model**
-   - Standard fields across platforms (title, company, location, salary)
-   - Platform-specific data
-   - Timestamps (posted date, found date)
-   - Unique identifier and source tracking
+- Standard fields across platforms (title, company, location, salary)
+- Platform-specific data
+- Timestamps (posted date, found date)
+- Unique identifier and source tracking
 
 3. **Search Criteria Model**
-   - Keywords and job titles
-   - Location preferences
-   - Salary range
-   - Experience level
-   - Remote work options
-   - Other filters (company size, industry, etc.)
+- Keywords and job titles
+- Location preferences
+- Salary range
+- Experience level
+- Remote work options
+- Other filters (company size, industry, etc.)
 
 4. **Analytics Model**
-   - Job market trends
-   - User interaction metrics
-   - Search performance data
+- Job market trends
+- User interaction metrics
+- Search performance data
 
-## APIs and Integrations
+## Integrations
 1. **External Job Platforms**
-   - LinkedIn Jobs API
-   - Djinni API
-   - DOU API
-   - Work.ua (scraping)
-   - Rabota.ua (scraping)
-   - LAYBOARD.com
-   - GitHub Careers
-   - HeadHunter
-   - Freelancehunt.com
-   - Jobs.ua
-   - Jooble
+- LinkedIn Jobs
+- Djinni
+- DOU
+- Work.ua
+- Rabota.ua
+- LAYBOARD.com
+- GitHub Careers
+- HeadHunter
+- Freelancehunt.com
+- Jobs.ua
+- Jooble
 
 2. **Internal APIs**
-   - User management API
-   - Job search and filtering API
-   - Notification API
-   - Analytics API
+- User management API
+- Job search and filtering API
+- Notification API
+- Analytics API
 
 ## Infrastructure Requirements
 1. **Hosting**
-   - Cloud-based hosting service
-   - Containerized deployment (Docker)
-   - CI/CD pipeline for continuous deployment
+- Cloud-based hosting service
+- Containerized deployment (Docker)
+- CI/CD pipeline for continuous deployment
 
 2. **Database**
-   - Supabase for relational data and authentication
-   - Document storage for job listings
+- Supabase for relational data and authentication
+- Document storage for job listings
 
 3. **Scheduled Jobs**
-   - Task queue for scheduled searches
-   - Caching layer for frequent searches
-   - Rate limiting for external API calls
+- Task queue for scheduled searches
+- Caching layer for frequent searches
+- Rate limiting for external API calls
 
 # Development Roadmap
 
@@ -92,16 +91,16 @@
 - Create core data models (User, Job Listing, Search Criteria)
 - Implement basic user management (registration, preferences)
 - Develop integration for 2-3 primary job platforms (starting with Ukrainian market)
-  - Prioritize LinkedIn, DOU, and Work.ua
+- Prioritize LinkedIn, Djinni, DOU, and Work.ua
 - Implement basic job search functionality with filtering
 
 ## Phase 2: Enhanced Backend and Initial UI
 - Expand job platform integrations to include additional sources
 - Implement data normalization for consistent job format across platforms
 - Develop Streamlit-based web interface
-  - Basic search interface
-  - Results display
-  - User preference management
+- Basic search interface
+- Results display
+- User preference management
 - Implement email notification system
 - Add scheduled search capability (on-demand and recurring)
 - Create basic analytics data collection
@@ -166,40 +165,40 @@
 
 ## Technical Challenges
 - **Risk**: Integration with multiple job platforms with varying API structures
-  - **Mitigation**: Create abstraction layer and standardized adapters for each platform
-  - **Mitigation**: Prioritize platforms with stable APIs first, then add scraped sources
+- **Mitigation**: Create abstraction layer and standardized adapters for each platform
+- **Mitigation**: Prioritize platforms with stable APIs first, then add scraped sources
 
 - **Risk**: Web scraping reliability and maintenance
-  - **Mitigation**: Implement robust error handling and monitoring
-  - **Mitigation**: Create fallback mechanisms for when scraping fails
-  - **Mitigation**: Schedule regular reviews of scraping code to handle site changes
+- **Mitigation**: Implement robust error handling and monitoring
+- **Mitigation**: Create fallback mechanisms for when scraping fails
+- **Mitigation**: Schedule regular reviews of scraping code to handle site changes
 
 - **Risk**: Performance issues with large volumes of job data
-  - **Mitigation**: Implement efficient caching strategies
-  - **Mitigation**: Use pagination and lazy loading
-  - **Mitigation**: Optimize database queries and indexing
+- **Mitigation**: Implement efficient caching strategies
+- **Mitigation**: Use pagination and lazy loading
+- **Mitigation**: Optimize database queries and indexing
 
 ## MVP Scoping
 - **Risk**: Feature creep extending development timeline
-  - **Mitigation**: Clearly define MVP with minimal feature set (core platforms, basic search, simple UI)
-  - **Mitigation**: Create modular architecture to allow incremental feature additions
-  - **Mitigation**: Implement feature flags for gradual rollout
+- **Mitigation**: Clearly define MVP with minimal feature set (core platforms, basic search, simple UI)
+- **Mitigation**: Create modular architecture to allow incremental feature additions
+- **Mitigation**: Implement feature flags for gradual rollout
 
 - **Risk**: Difficulty determining most valuable features for users
-  - **Mitigation**: Start with essential search and notification capabilities
-  - **Mitigation**: Implement analytics to track feature usage
-  - **Mitigation**: Plan for user feedback collection early
+- **Mitigation**: Start with essential search and notification capabilities
+- **Mitigation**: Implement analytics to track feature usage
+- **Mitigation**: Plan for user feedback collection early
 
 ## Resource Constraints
 - **Risk**: API rate limits and costs for external services
-  - **Mitigation**: Implement intelligent caching and request batching
-  - **Mitigation**: Set up usage monitoring and alerts
-  - **Mitigation**: Create queuing system for non-urgent requests
+- **Mitigation**: Implement intelligent caching and request batching
+- **Mitigation**: Set up usage monitoring and alerts
+- **Mitigation**: Create queuing system for non-urgent requests
 
 - **Risk**: Scaling challenges as user base grows
-  - **Mitigation**: Design for horizontal scaling from the beginning
-  - **Mitigation**: Implement database sharding strategy
-  - **Mitigation**: Use cloud services that allow easy scaling
+- **Mitigation**: Design for horizontal scaling from the beginning
+- **Mitigation**: Implement database sharding strategy
+- **Mitigation**: Use cloud services that allow easy scaling
 
 # Appendix
 

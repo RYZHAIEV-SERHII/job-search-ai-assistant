@@ -1,7 +1,7 @@
 site_name: job-search-ai-assistant
 repo_url: https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant
 site_url: https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant
-site_description: This is a template repository for Python projects that use uv for their dependency management.
+site_description: A comprehensive job search aggregator built with Python 3.13 and FastAPI that integrates multiple job platforms to streamline the job hunting process.
 site_author: RYZHAIEV-SERHII
 edit_uri: edit/main/docs/
 repo_name: RYZHAIEV-SERHII/job-search-ai-assistant
