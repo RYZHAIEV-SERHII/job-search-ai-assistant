@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.1 (2025-05-25)
+
+### Bug Fixes
+
+- Add httpx dependency so the quality-check workflow works properly.
+  ([`e9f295e`](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/commit/e9f295e98730b9e1ae30755f3886c19a7cc24b2b))
+
+
 ## v0.2.0 (2025-05-25)
 
 ### Documentation
