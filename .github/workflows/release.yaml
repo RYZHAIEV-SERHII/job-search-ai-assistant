@@ -94,7 +94,7 @@ jobs:
         env:
           # Set environment based on branch
           PRERELEASE: ${{ contains(github.ref, 'alpha/') || contains(github.ref, 'beta/') || contains(github.ref, 'rc/') }}
-        uses: python-semantic-release/python-semantic-release@v9.21.1
+        uses: python-semantic-release/python-semantic-release@v10.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_name: "github-actions"
@@ -102,7 +102,7 @@ jobs:
 
       # Step 6: Upload artifacts to GitHub Releases
       - name: Publish | Upload to GitHub Release Assets
-        uses: python-semantic-release/publish-action@v9.21.1
+        uses: python-semantic-release/publish-action@v10.0.0
         if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

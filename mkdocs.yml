@@ -125,7 +125,7 @@ plugins:
         python:
           options:
             show_source: true
-          paths: [job_search_ai_assistant]
+          paths: [src]
 validation:
   omitted_files: warn
   absolute_links: warn

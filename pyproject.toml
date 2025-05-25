@@ -18,6 +18,11 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dependencies = [
+    "fastapi>=0.115.12",
+    "uvicorn>=0.34.2",
+    "pydantic>=2.11.5",
+]
 
 [project.urls]
 Homepage = "https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/"
@@ -32,12 +37,12 @@ dev = [
   "deptry>=0.23.0",
   "mypy>=1.15.0",
   "pytest-cov>=6.1.1",
-  "ruff>=0.11.10",
+  "ruff>=0.11.11",
   "mkdocs>=1.6.1",
   "mkdocs-material>=9.6.14",
   "mkdocs-github-admonitions-plugin>=0.0.3",
   "mkdocstrings[python]>=0.29.1",
-  "python-semantic-release>=9.21.1",
+  "python-semantic-release>=10.0.0",
 ]
 
 # Build system configuration
@@ -75,6 +80,9 @@ markers = [
     "integration: mark a test as an integration test",
 ]
 
+# Configuration for deptry
+[tool.deptry]
+ignore = ["DEP003", "DEP004"]
 
 # Configuration for ruff
 [tool.ruff]

@@ -9,7 +9,7 @@
 [![codecov](https://codecov.io/gh/RYZHAIEV-SERHII/job-search-ai-assistant/branch/main/graph/badge.svg)](https://codecov.io/gh/RYZHAIEV-SERHII/job-search-ai-assistant)
 [![Tests](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions/workflows/tests.yml/badge.svg)](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/RYZHAIEV-SERHII/job-search-ai-assistant)](https://img.shields.io/github/commit-activity/m/RYZHAIEV-SERHII/job-search-ai-assistant)
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&logo=github)](CONTRIBUTING.md)
 
@@ -28,18 +28,17 @@ A comprehensive job search aggregator built with Python 3.13 and FastAPI that in
 ## 🔧 Tech Stack
 
 - **Core Dependencies**
-    - Python 3.9-3.13: Full compatibility with multiple Python versions
-    - FastAPI: High-performance web framework for building APIs
-    - Supabase: Database and authentication backend
-    - Streamlit: Interactive web interface
+  - Python 3.9-3.13: Full compatibility with multiple Python versions
+  - FastAPI: High-performance web framework for building APIs
+  - Supabase: Database and authentication backend
+  - Streamlit: Interactive web interface
 - **Development Tools**
-    - Ruff: Fast Python linter and formatter
-    - Pre-commit: Automated code quality checks
-    - PyTest: Comprehensive test framework with coverage reporting
-    - MyPy: Static type checking
-    - Tox: Testing across multiple Python environments
-    - uv: Fast Python package installer and resolver
-
+  - Ruff: Fast Python linter and formatter
+  - Pre-commit: Automated code quality checks
+  - PyTest: Comprehensive test framework with coverage reporting
+  - MyPy: Static type checking
+  - Tox: Testing across multiple Python environments
+  - uv: Fast Python package installer and resolver
 
 ## 🚀 Getting Started
 
@@ -51,23 +50,27 @@ A comprehensive job search aggregator built with Python 3.13 and FastAPI that in
 ## 🚀 Installation
 
 1. Clone the repository
+
     ```bash
     git clone https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant.git
     cd job-search-ai-assistant
     ```
 
 2. Install dependencies using uv
+
     ```bash
     uv sync
     ```
 
 3. Install pre-commit hooks
+
     ```bash
     uv run pre-commit install
     uv run pre-commit install --hook-type commit-msg
     ```
 
 4. Run the application
+
     ```bash
     python main.py
     ```
@@ -80,14 +83,19 @@ A comprehensive job search aggregator built with Python 3.13 and FastAPI that in
 ## 🧪 Running Tests
 
 Run tests using Make:
+
 ```bash
 make test
 ```
+
 Or directly with pytest:
+
 ```bash
 pytest
 ```
+
 To run tests across multiple Python versions:
+
 ```bash
 tox
 ```
@@ -95,16 +103,17 @@ tox
 ## 🔍 Code Quality
 
 Run all code quality checks:
+
 ```bash
 make check
 ```
 
 This will:
+
 - Check lock file consistency
 - Run pre-commit hooks
 - Run static type checking with mypy
 - Check for obsolete dependencies with deptry
-
 
 ## 📚 Documentation
 
@@ -121,7 +130,8 @@ make docs-test
 ```
 
 ## 🏗️ Project Structure
-```
+
+```bash
 job-search-ai-assistant/
 │
 ├── .github/               # GitHub configuration files
@@ -143,7 +153,9 @@ job-search-ai-assistant/
 ├── tox.ini                # Tox configuration
 └── uv.lock                # uv lock file
 ```
+
 ## 🛣️ Roadmap
+
 - [x] Initial project setup
 - [x] CI/CD pipeline with GitHub Actions
 - [ ] Job platform API integrations
@@ -153,7 +165,6 @@ job-search-ai-assistant/
 - [ ] Analytics dashboard
 
 For detailed version history and latest changes, see our [CHANGELOG](CHANGELOG.md) 📈
-
 
 ## 🧰️ Contributing
 
