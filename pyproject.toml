@@ -43,6 +43,7 @@ dev = [
   "mkdocs-github-admonitions-plugin>=0.0.3",
   "mkdocstrings[python]>=0.29.1",
   "python-semantic-release>=10.0.0",
+  "httpx>=0.28.1",
 ]
 
 # Build system configuration
@@ -83,6 +84,9 @@ markers = [
 # Configuration for deptry
 [tool.deptry]
 ignore = ["DEP003", "DEP004"]
+# Ignore DEP002 for test dependencies that are only used in tests
+ignore_notebooks = true
+extend_exclude = ["tests/"]
 
 # Configuration for ruff
 [tool.ruff]
