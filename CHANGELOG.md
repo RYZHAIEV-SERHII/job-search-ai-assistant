@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-05-25)
+
+### Documentation
+
+- Update documentation for Job Search AI Assistant
+  ([`22e43cb`](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/commit/22e43cbee6829360bf269785555306155cfbea9e))
+
+### Features
+
+- Add test configuration and fixtures, implement tests for application and health check
+  ([`a6ca11f`](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/commit/a6ca11fa04c8ddd1a2d19b1da8be118ad10318d9))
+
+
 ## v0.1.0 (2025-05-25)
 
 ### Chores
