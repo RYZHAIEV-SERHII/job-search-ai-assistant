@@ -1,0 +1,239 @@
+# Technical Architecture
+
+## System Components
+1. **Backend Service (Python 3.13)**
+- FastAPI framework for the core API
+- Supabase for data persistence and user management
+- Job scraping and API integration modules
+- Notification service
+
+2. **Data Collection Layer**
+- Bright Data MCP and Crawl4AI implementations for platforms without APIs
+- Data normalization component to standardize job listings
+
+3. **Web Interface**
+- Streamlit-based frontend for improved UX
+- Responsive design supporting multiple devices
+- Interactive dashboard with search, filters, and analytics
+
+4. **Notification System**
+- Email notification service (primary)
+- Telegram integration (optional)
+- Configurable notification preferences and schedules
+
+## Data Models
+1. **User Model**
+- Basic profile information (name, email, preferences)
+- Search history and saved searches
+- Notification preferences
+- Platform credentials (as needed for API access)
+
+2. **Job Listing Model**
+- Standard fields across platforms (title, company, location, salary)
+- Platform-specific data
+- Timestamps (posted date, found date)
+- Unique identifier and source tracking
+
+3. **Search Criteria Model**
+- Keywords and job titles
+- Location preferences
+- Salary range
+- Experience level
+- Remote work options
+- Other filters (company size, industry, etc.)
+
+4. **Analytics Model**
+- Job market trends
+- User interaction metrics
+- Search performance data
+
+## Integrations
+1. **External Job Platforms**
+- LinkedIn Jobs
+- Djinni
+- DOU
+- Work.ua
+- Rabota.ua
+- LAYBOARD.com
+- GitHub Careers
+- HeadHunter
+- Freelancehunt.com
+- Jobs.ua
+- Jooble
+
+2. **Internal APIs**
+- User management API
+- Job search and filtering API
+- Notification API
+- Analytics API
+
+## Infrastructure Requirements
+1. **Hosting**
+- Cloud-based hosting service
+- Containerized deployment (Docker)
+- CI/CD pipeline for continuous deployment
+
+2. **Database**
+- Supabase for relational data and authentication
+- Document storage for job listings
+
+3. **Scheduled Jobs**
+- Task queue for scheduled searches
+- Caching layer for frequent searches
+- Rate limiting for external API calls
+
+# Development Roadmap
+
+## Phase 1: MVP Foundation (Core Backend)
+- Set up development environment with Python 3.13
+- Implement FastAPI project structure
+- Set up Supabase integration for data storage
+- Create core data models (User, Job Listing, Search Criteria)
+- Implement basic user management (registration, preferences)
+- Develop integration for 2-3 primary job platforms (starting with Ukrainian market)
+- Prioritize LinkedIn, Djinni, DOU, and Work.ua
+- Implement basic job search functionality with filtering
+
+## Phase 2: Enhanced Backend and Initial UI
+- Expand job platform integrations to include additional sources
+- Implement data normalization for consistent job format across platforms
+- Develop Streamlit-based web interface
+- Basic search interface
+- Results display
+- User preference management
+- Implement email notification system
+- Add scheduled search capability (on-demand and recurring)
+- Create basic analytics data collection
+
+## Phase 3: Advanced Features and UX Improvements
+- Enhance Streamlit UI with improved visuals and responsiveness
+- Implement job comparison feature across platforms
+- Add advanced filtering options
+- Implement Telegram notification alternative
+- Enhance analytics dashboard with job market trends
+- Optimize search performance and result relevance
+- Add internationalization support for expanding beyond Ukrainian market
+
+## Phase 4: Refinement and Expansion
+- Implement remaining job platform integrations
+- Add machine learning components for job matching
+- Develop resume parsing capabilities
+- Create application tracking functionality
+- Enhance analytics with personalized insights
+- Implement performance optimizations and scaling improvements
+- Add European and US job markets
+
+## Future Enhancements
+- Mobile application development
+- Browser extension for job platform integration
+- AI-powered job match scoring
+- Interview preparation tools
+- Salary negotiation assistant
+- Career path recommendations
+
+# Logical Dependency Chain
+
+## Foundation (Must Complete First)
+1. Core backend setup (FastAPI, Supabase)
+2. Basic data models implementation
+3. User management system
+4. Initial job platform integrations (2-3 platforms)
+5. Basic search and filter functionality
+
+## Early Visible Features
+1. Streamlit web interface with basic search capability
+2. Job listing display with essential information
+3. User preference management
+4. Email notifications for new results
+
+## Incremental Enhancements
+1. Additional job platform integrations
+2. Advanced filtering options
+3. Scheduled searches
+4. Analytics dashboard
+5. Job comparison feature
+6. Alternative notification channels
+
+## Advanced Features
+1. International market expansion
+2. Machine learning for job matching
+3. Resume parsing and recommendations
+4. Application tracking
+5. Advanced analytics and insights
+
+# Risks and Mitigations
+
+## Technical Challenges
+- **Risk**: Integration with multiple job platforms with varying API structures
+- **Mitigation**: Create abstraction layer and standardized adapters for each platform
+- **Mitigation**: Prioritize platforms with stable APIs first, then add scraped sources
+
+- **Risk**: Web scraping reliability and maintenance
+- **Mitigation**: Implement robust error handling and monitoring
+- **Mitigation**: Create fallback mechanisms for when scraping fails
+- **Mitigation**: Schedule regular reviews of scraping code to handle site changes
+
+- **Risk**: Performance issues with large volumes of job data
+- **Mitigation**: Implement efficient caching strategies
+- **Mitigation**: Use pagination and lazy loading
+- **Mitigation**: Optimize database queries and indexing
+
+## MVP Scoping
+- **Risk**: Feature creep extending development timeline
+- **Mitigation**: Clearly define MVP with minimal feature set (core platforms, basic search, simple UI)
+- **Mitigation**: Create modular architecture to allow incremental feature additions
+- **Mitigation**: Implement feature flags for gradual rollout
+
+- **Risk**: Difficulty determining most valuable features for users
+- **Mitigation**: Start with essential search and notification capabilities
+- **Mitigation**: Implement analytics to track feature usage
+- **Mitigation**: Plan for user feedback collection early
+
+## Resource Constraints
+- **Risk**: API rate limits and costs for external services
+- **Mitigation**: Implement intelligent caching and request batching
+- **Mitigation**: Set up usage monitoring and alerts
+- **Mitigation**: Create queuing system for non-urgent requests
+
+- **Risk**: Scaling challenges as user base grows
+- **Mitigation**: Design for horizontal scaling from the beginning
+- **Mitigation**: Implement database sharding strategy
+- **Mitigation**: Use cloud services that allow easy scaling
+
+# Appendix
+
+## Technical Specifications
+
+### Python Dependencies
+- Python 3.13
+- FastAPI
+- Pydantic
+- SQLAlchemy
+- Streamlit
+- Supabase-py
+- Beautiful Soup / Selenium (for scraping)
+- Bright Data MCP SDK
+- Crawl4AI SDK
+- Notifiers library
+- APScheduler (for scheduled tasks)
+- Pandas (for data processing)
+- Matplotlib/Plotly (for analytics visualization)
+
+### API Authentication Methods
+- OAuth2 for LinkedIn
+- API Keys for most job platforms
+- Session-based authentication for scraped sites
+
+### Data Processing Workflow
+1. User initiates search or scheduled task runs
+2. System queries multiple platforms in parallel
+3. Results are normalized and deduplicated
+4. Data is stored in Supabase
+5. Results are presented via Streamlit UI
+6. Notifications sent based on user preferences
+
+### Performance Targets
+- Search results returned in <5 seconds for up to 5 platforms
+- Daily scheduled searches for all users completed within 2-hour window
+- System capable of handling 1000+ concurrent users
+- 99.9% uptime for API and web interface
