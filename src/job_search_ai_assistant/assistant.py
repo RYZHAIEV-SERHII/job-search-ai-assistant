@@ -14,5 +14,5 @@ def assistant() -> FastAPI:
     return create_app()
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     assistant()

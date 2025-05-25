@@ -7,7 +7,7 @@
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![codecov](https://codecov.io/gh/RYZHAIEV-SERHII/job-search-ai-assistant/branch/main/graph/badge.svg)](https://codecov.io/gh/RYZHAIEV-SERHII/job-search-ai-assistant)
-[![Tests](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions/workflows/tests.yml/badge.svg)](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions)
+[![Tests](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions/workflows/quality_checks.yml/badge.svg)](https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant/actions)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

@@ -18,16 +18,12 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
 dependencies = [
     "fastapi>=0.115.12",
     "uvicorn>=0.34.2",
     "pydantic>=2.11.5",
 ]
-
-[project.urls]
-Homepage = "https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/"
-Repository = "https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant"
-Documentation = "https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/"
 
 [dependency-groups]
 dev = [
@@ -45,6 +41,11 @@ dev = [
   "python-semantic-release>=10.0.0",
   "httpx>=0.28.1",
 ]
+
+[project.urls]
+Homepage = "https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/"
+Repository = "https://github.com/RYZHAIEV-SERHII/job-search-ai-assistant"
+Documentation = "https://RYZHAIEV-SERHII.github.io/job-search-ai-assistant/"
 
 # Build system configuration
 [build-system]
