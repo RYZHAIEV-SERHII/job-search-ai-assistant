@@ -77,6 +77,7 @@ minversion = "8.0"
 addopts = "-ra -q --strict-markers --cov-report=term-missing"  # Pytest run options
 testpaths = ["tests"]
 pythonpath = ["."]
+asyncio_default_fixture_loop_scope = "function"
 markers = [
     "unit: mark a test as a unit test",
     "integration: mark a test as an integration test",
