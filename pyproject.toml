@@ -23,13 +23,14 @@ dependencies = [
     "fastapi>=0.115.12",
     "uvicorn>=0.34.2",
     "pydantic>=2.11.5",
+    "crawl4ai>=0.6.3",
 ]
 
 [dependency-groups]
 dev = [
   "pytest>=8.3.5",
   "pre-commit>=4.2.0",
-  "tox-uv>=1.25.0",
+  "tox-uv>=1.26.0",
   "deptry>=0.23.0",
   "mypy>=1.15.0",
   "pytest-cov>=6.1.1",
@@ -38,7 +39,7 @@ dev = [
   "mkdocs-material>=9.6.14",
   "mkdocs-github-admonitions-plugin>=0.0.3",
   "mkdocstrings[python]>=0.29.1",
-  "python-semantic-release>=10.0.0",
+  "python-semantic-release>=10.0.2",
   "httpx>=0.28.1",
 ]
 
@@ -63,6 +64,7 @@ path = "pyproject.toml:version"
 # Configuration for mypy
 [tool.mypy]
 files = ["src"]
+mypy_path = "src"
 disallow_untyped_defs = true
 disallow_any_unimported = true
 no_implicit_optional = true
@@ -70,6 +72,20 @@ check_untyped_defs = true
 warn_return_any = true
 warn_unused_ignores = true
 show_error_codes = true
+explicit_package_bases = true
+
+# Handle untyped third-party libraries
+[[tool.mypy.overrides]]
+module = [
+    "crawl4ai",
+    "crawl4ai.*",
+    "job_search_ai_assistant.collectors.crawl4ai.*",
+]
+ignore_missing_imports = true
+disallow_any_unimported = false
+disallow_any_generics = false
+disallow_subclassing_any = false
+warn_return_any = false
 
 # Pytest configuration for testing
 [tool.pytest.ini_options]
