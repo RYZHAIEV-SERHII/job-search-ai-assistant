@@ -2,7 +2,7 @@
 
 import uvicorn
 
-from src.job_search_ai_assistant.assistant import assistant
+from src.job_search_ai_assistant import assistant
 
 job_search_ai_assistant = assistant()
 

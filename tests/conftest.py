@@ -3,7 +3,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from src.job_search_ai_assistant.assistant import assistant
+from src.job_search_ai_assistant import assistant
 
 
 @pytest.fixture

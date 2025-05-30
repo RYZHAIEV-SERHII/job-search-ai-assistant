@@ -32,9 +32,9 @@ class JobPosting(BaseModel):
     def validate_requirements(cls, v: list[str]) -> list[str]:
         """Validate that requirements is not empty and contains valid strings."""
         if not v:
-            raise ValueError("requirements cannot be empty")  # noqa: TRY003
+            raise ValueError("requirements cannot be empty")
         if not all(isinstance(req, str) and req.strip() for req in v):
-            raise ValueError("all requirements must be non-empty strings")  # noqa: TRY003
+            raise ValueError("all requirements must be non-empty strings")
         return v
 
     @field_validator("url")
@@ -44,11 +44,11 @@ class JobPosting(BaseModel):
         try:
             result = urlparse(v)
             if not all([result.scheme in ("http", "https"), result.netloc]):
-                raise ValueError("invalid URL format")  # noqa: TRY003, TRY301
+                raise ValueError("invalid URL format")  # noqa: TRY301
             else:
                 return v
         except Exception as e:
-            raise ValueError("invalid URL format") from e  # noqa: TRY003
+            raise ValueError("invalid URL format") from e
 
     model_config = ConfigDict(
         json_schema_extra={
