@@ -1,6 +1,6 @@
 """Base configuration and utilities for platform-specific scrapers."""
 
-from typing import Optional, Protocol
+from typing import Any, Protocol
 
 from pydantic import BaseModel, Field
 
@@ -12,11 +12,11 @@ class SelectorConfig(BaseModel):
     title: str = Field(..., description="Selector for job title")
     company: str = Field(..., description="Selector for company name")
     location: str = Field(..., description="Selector for job location")
-    salary: Optional[str] = Field(None, description="Selector for salary information")
+    salary: str | None = Field(None, description="Selector for salary information")
     description: str = Field(..., description="Selector for job description")
     requirements: str = Field(..., description="Selector for job requirements")
-    url: Optional[str] = Field(None, description="Selector for job posting URL")
-    apply_link: Optional[str] = Field(None, description="Selector for apply button/link")
+    url: str | None = Field(None, description="Selector for job posting URL")
+    apply_link: str | None = Field(None, description="Selector for apply button/link")
 
 
 class PlatformConfig(BaseModel):
@@ -25,10 +25,16 @@ class PlatformConfig(BaseModel):
     name: str = Field(..., description="Platform name")
     base_url: str = Field(..., description="Base URL for job search")
     selectors: SelectorConfig = Field(..., description="CSS selectors for job data extraction")
-    wait_for: Optional[str] = Field(None, description="Element to wait for before extraction")
-    dynamic_wait: Optional[float] = Field(None, description="Additional wait time for dynamic content")
-    pagination_selector: Optional[str] = Field(None, description="Selector for pagination element")
-    max_pages: Optional[int] = Field(10, description="Maximum number of pages to scrape")
+    wait_for: str | None = Field(None, description="Element to wait for before extraction")
+    dynamic_wait: float | None = Field(None, description="Additional wait time for dynamic content")
+    pagination_selector: str | None = Field(None, description="Selector for pagination element")
+    max_pages: int | None = Field(10, description="Maximum number of pages to scrape")
+
+    class Config:
+        """Model configuration."""
+
+        protected_namespaces = ()  # Allow arbitrary fields
+        arbitrary_types_allowed = True  # Allow HttpUrl type
 
 
 class PlatformAdapter(Protocol):
@@ -43,7 +49,7 @@ class PlatformAdapter(Protocol):
         """
         ...
 
-    def build_search_url(self, keywords: list[str], location: Optional[str] = None) -> str:
+    def build_search_url(self, keywords: list[str], location: str | None = None) -> str:
         """Build search URL with parameters.
 
         Args:
@@ -55,10 +61,10 @@ class PlatformAdapter(Protocol):
         """
         ...
 
-    def get_extraction_config(self) -> dict:
+    def get_extraction_config(self) -> dict[str, Any]:
         """Get extraction configuration for Crawl4AI.
 
         Returns:
-            dict: Configuration for JobExtractionStrategy
+            dict[str, Any]: Configuration for JobExtractionStrategy
         """
         ...

@@ -1,6 +1,6 @@
 """Djinni platform adapter implementation."""
 
-from typing import Optional
+from typing import Any
 from urllib.parse import urlencode
 
 from .base import PlatformAdapter, PlatformConfig, SelectorConfig
@@ -43,7 +43,7 @@ class DjinniAdapter(PlatformAdapter):
         """
         return self._config
 
-    def build_search_url(self, keywords: list[str], location: Optional[str] = None) -> str:
+    def build_search_url(self, keywords: list[str], location: str | None = None) -> str:
         """Build Djinni search URL.
 
         Args:
@@ -58,7 +58,7 @@ class DjinniAdapter(PlatformAdapter):
 
         params = {
             "primary_keyword": keywords_param,
-            "page": 1,
+            "page": "1",  # Djinni expects page as string
         }
 
         if location:
@@ -73,13 +73,14 @@ class DjinniAdapter(PlatformAdapter):
             normalized_location = location_mapping.get(location, location.lower())
             params["location"] = normalized_location
 
-        return f"{self.config.base_url}?{urlencode(params)}"
+        url = f"{self.config.base_url!s}?{urlencode(params)}" if params else str(self.config.base_url)
+        return url
 
-    def get_extraction_config(self) -> dict:
+    def get_extraction_config(self) -> dict[str, Any]:
         """Get extraction configuration for Crawl4AI.
 
         Returns:
-            dict: Configuration for JobExtractionStrategy
+            dict[str, Any]: Configuration for JobExtractionStrategy
         """
         selectors = self.config.selectors
         return {

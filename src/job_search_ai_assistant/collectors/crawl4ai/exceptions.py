@@ -1,7 +1,5 @@
 """Custom exceptions for job scraping operations."""
 
-from typing import Optional
-
 
 class ScrapingError(Exception):
     """Base exception for scraping operations."""
@@ -10,7 +8,7 @@ class ScrapingError(Exception):
         self,
         message: str,
         error_type: str,
-        details: Optional[dict] = None,
+        details: dict | None = None,
     ) -> None:
         """Initialize scraping error.
 
@@ -44,7 +42,7 @@ class ScrapingError(Exception):
 class ExtractionError(ScrapingError):
     """Error during content extraction."""
 
-    def __init__(self, message: str, details: Optional[dict] = None) -> None:
+    def __init__(self, message: str, details: dict | None = None) -> None:
         """Initialize extraction error.
 
         Args:
@@ -61,7 +59,7 @@ class ExtractionError(ScrapingError):
 class NetworkError(ScrapingError):
     """Error during network operations."""
 
-    def __init__(self, message: str, details: Optional[dict] = None) -> None:
+    def __init__(self, message: str, details: dict | None = None) -> None:
         """Initialize network error.
 
         Args:
@@ -78,7 +76,7 @@ class NetworkError(ScrapingError):
 class RateLimitError(ScrapingError):
     """Error when rate limit is exceeded."""
 
-    def __init__(self, message: str, details: Optional[dict] = None) -> None:
+    def __init__(self, message: str, details: dict | None = None) -> None:
         """Initialize rate limit error.
 
         Args:
@@ -95,7 +93,7 @@ class RateLimitError(ScrapingError):
 class ValidationError(ScrapingError):
     """Error during data validation."""
 
-    def __init__(self, message: str, details: Optional[dict] = None) -> None:
+    def __init__(self, message: str, details: dict | None = None) -> None:
         """Initialize validation error.
 
         Args:

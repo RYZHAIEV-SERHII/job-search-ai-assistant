@@ -1,6 +1,6 @@
 """Custom extraction strategies for job scraping."""
 
-from typing import Optional
+from typing import Any
 
 from crawl4ai import LLMConfig
 from crawl4ai.extraction_strategy import (
@@ -17,7 +17,7 @@ from .models import JobPosting
 class JobExtractionStrategy(JsonCssExtractionStrategy):
     """Custom extraction strategy for job listings using CSS selectors."""
 
-    def __init__(self, config: dict) -> None:
+    def __init__(self, config: dict[str, Any]) -> None:
         """Initialize the extraction strategy.
 
         Args:
@@ -47,7 +47,7 @@ class JobLLMExtractionStrategy(BaseLLMExtractionStrategy):
 
     def __init__(
         self,
-        llm_config: Optional[LLMConfig] = None,
+        llm_config: LLMConfig | None = None,
     ) -> None:
         """Initialize the LLM extraction strategy.
 
@@ -99,8 +99,8 @@ Do not make assumptions or add information not present in the HTML.""",
         url: str,
         ix: int = 0,
         max_retries: int = 2,
-        fallback_provider: Optional[str] = "openai/gpt-3.5-turbo",
-    ) -> dict:
+        fallback_provider: str | None = "openai/gpt-3.5-turbo",
+    ) -> dict[str, Any]:
         """Extract job information with retry logic.
 
         Args:
@@ -111,7 +111,7 @@ Do not make assumptions or add information not present in the HTML.""",
             fallback_provider: Optional fallback LLM provider
 
         Returns:
-            dict: Extracted job information
+            dict[str, Any]: Extracted job information
         """
         for attempt in range(max_retries):
             try:
@@ -138,8 +138,8 @@ Do not make assumptions or add information not present in the HTML.""",
 
 def create_extraction_strategy(
     strategy_type: str = "css",
-    css_config: Optional[dict] = None,
-    llm_config: Optional[LLMConfig] = None,
+    css_config: dict[str, Any] | None = None,
+    llm_config: LLMConfig | None = None,
 ) -> ExtractionStrategy:
     """Factory function to create appropriate extraction strategy.
 
