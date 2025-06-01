@@ -1,8 +1,10 @@
 """Test configuration and shared fixtures."""
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
+from unittest.mock import MagicMock
 
 import pytest
 from crawl4ai import LLMConfig
@@ -141,3 +143,25 @@ def mock_crawler_config(mocker: MockerFixture) -> None:
 
     # Mock the AsyncWebCrawler constructor
     mocker.patch("crawl4ai.AsyncWebCrawler", return_value=mock_crawler)
+
+
+# Mock JobPosting to avoid Pydantic validation errors
+class MockJobPosting:
+    """Mock JobPosting class for testing."""
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    @classmethod
+    def model_validate(cls, data):
+        return cls(**data)
+
+    @classmethod
+    def model_json_schema(cls):
+        return {"type": "object", "properties": {}}
+
+
+mock_models = MagicMock()
+mock_models.JobPosting = MockJobPosting
+sys.modules["src.job_search_ai_assistant.collectors.crawl4ai.models"] = mock_models
