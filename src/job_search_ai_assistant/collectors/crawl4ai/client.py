@@ -14,7 +14,7 @@ from crawl4ai.extraction_strategy import (
     LLMExtractionStrategy,
 )
 
-from ...api.schemas.search import SearchCriteria
+from ...api.schemas.search import SearchFilters
 from .exceptions import ScrapingError
 from .extractors import JobExtractionStrategy
 from .models import JobPosting
@@ -98,7 +98,7 @@ class JobScraperClient:
         self,
         url: str,
         platform: str,
-        criteria: SearchCriteria,
+        criteria: SearchFilters,
         wait_for: Optional[str] = None,
         wait_timeout: Optional[int] = None,
         llm_fallback: bool = True,
@@ -161,7 +161,7 @@ class JobScraperClient:
     def _filter_jobs(
         self,
         jobs: list[JobPosting],
-        criteria: SearchCriteria,
+        criteria: SearchFilters,
     ) -> list[JobPosting]:
         """Filter jobs based on search criteria.
 
