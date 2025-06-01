@@ -196,8 +196,10 @@ ignore = [
   "E501",
   # DoNotAssignLambda
   "E731",
-  # Do not use bare except
+  # RaiseVanillaArgs
   "TRY003",
+  # MagicValueComparison
+  "PLR2004"
 ]
 
 [tool.ruff.lint.per-file-ignores]
