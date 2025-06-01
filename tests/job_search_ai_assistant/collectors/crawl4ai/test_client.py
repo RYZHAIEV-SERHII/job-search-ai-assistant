@@ -8,9 +8,7 @@ from src.job_search_ai_assistant.api.schemas.search import SearchFilters
 from src.job_search_ai_assistant.collectors.crawl4ai.client import JobScraperClient
 from src.job_search_ai_assistant.collectors.crawl4ai.exceptions import ScrapingError
 from src.job_search_ai_assistant.collectors.crawl4ai.extractors import JobExtractionStrategy
-
-# Import the mock from conftest
-from tests.conftest import MockJobPosting as JobPosting
+from src.job_search_ai_assistant.collectors.crawl4ai.models import JobPosting
 
 
 class TestJobScraperClient:

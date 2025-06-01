@@ -1,19 +1,11 @@
 """Tests for job extraction strategies."""
 
-import sys
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 from crawl4ai import LLMConfig
 
-# Mock the models module before importing extractors to avoid field_validator error
-mock_models = MagicMock()
-mock_models.JobPosting = MagicMock()
-mock_models.JobPosting.model_json_schema = MagicMock(return_value={})
-sys.modules["src.job_search_ai_assistant.collectors.crawl4ai.models"] = mock_models
-
-# Now we can safely import extractors
-from src.job_search_ai_assistant.collectors.crawl4ai.extractors import (  # noqa: E402
+from src.job_search_ai_assistant.collectors.crawl4ai.extractors import (
     JobExtractionStrategy,
     JobLLMExtractionStrategy,
     create_extraction_strategy,

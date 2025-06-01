@@ -19,7 +19,8 @@ class JobPosting(BaseModel):
     platform: str | None = Field(None, description="Source platform name (e.g., LinkedIn, Djinni)")
 
     @field_validator("requirements")
-    def validate_requirements(self, v: list[str]) -> list[str]:
+    @classmethod
+    def validate_requirements(cls, v: list[str]) -> list[str]:
         """Validate job requirements.
 
         Args:
@@ -37,7 +38,8 @@ class JobPosting(BaseModel):
         return requirements
 
     @field_validator("url", "apply_url")
-    def validate_url_scheme(self, v: HttpUrl | None) -> HttpUrl | None:
+    @classmethod
+    def validate_url_scheme(cls, v: HttpUrl | None) -> HttpUrl | None:
         """Validate URL scheme.
 
         Args:
@@ -56,7 +58,8 @@ class JobPosting(BaseModel):
         raise ValueError("URL must use http or https scheme")
 
     @field_validator("title", "company", "location", "description")
-    def strip_whitespace(self, v: str) -> str:
+    @classmethod
+    def strip_whitespace(cls, v: str) -> str:
         """Strip whitespace from string fields.
 
         Args:
